@@ -1,0 +1,7 @@
+.img-preview {
+    width: 150px;
+    height: 150px;
+    border: 2px solid #ddd;
+    margin-top: 10px;
+    display: none; /* Hide preview initially */
+}

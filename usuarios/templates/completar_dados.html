@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}Completar Dados{% endblock %}
+
+{% block head %} 
+{% endblock %}
+
+{% block conteudo %}
+<div class="container mt-5">
+    <h2>Complete seu Perfil</h2>
+    <div class="progress mb-4">
+        <div class="progress-bar" role="progressbar" style="width: 33%;" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100">Passo 1 de 3</div>
+    </div>
+
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+    {% endif %}
+
+    <form action="{% url 'completar_dados' %}" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="matricula" class="form-label">Matricula</label>
+            <input type="text" class="form-control" id="matricula" name="matricula">
+        </div>
+        <div class="mb-3">
+            <label for="rg" class="form-label">RG</label>
+            <input type="text" class="form-control" id="rg" name="rg">
+        </div>
+        <div class="mb-3">
+            <label for="cpf" class="form-label">CPF</label>
+            <input type="text" class="form-control" id="cpf" name="cpf">
+        </div>
+        <div class="mb-3">
+            <label for="telefone" class="form-label">Telefone</label>
+            <input type="text" class="form-control" id="telefone" name="telefone">
+        </div>
+        <div class="mb-3">
+            <label for="cep" class="form-label">Cep</label>
+            <input type="text" class="form-control" id="cep" name="cep">
+        </div>
+        <div class="mb-3">
+            <label for="rua" class="form-label">Rua</label>
+            <input type="text" class="form-control" id="rua" name="rua">
+        </div>
+        <div class="mb-3">
+            <label for="numero" class="form-label">Número</label>
+            <input type="text" class="form-control" id="numero" name="numero">
+        </div>
+        <div class="mb-3">
+            <label for="bairro" class="form-label">Bairro</label>
+            <input type="text" class="form-control" id="bairro" name="bairro">
+        </div>
+        <div class="mb-3">
+            <label for="cidade" class="form-label">Cidade</label>
+            <input type="text" class="form-control" id="cidade" name="cidade">
+        </div>
+        <div class="mb-3">
+            <label for="estado" class="form-label">Estado</label>
+            <input type="text" class="form-control" id="estado" name="estado">
+        </div>           
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </form>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        function maskCPF(value) {
+            return value
+                .replace(/\D/g, '') 
+                .slice(0, 11) 
+                .replace(/(\d{3})(\d)/, '$1.$2') 
+                .replace(/(\d{3})(\d)/, '$1.$2') 
+                .replace(/(\d{3})(\d{1,2})$/, '$1-$2'); 
+        }
+
+        function maskPhone(value) {
+            return value
+                .replace(/\D/g, '') 
+                .slice(0, 11) 
+                .replace(/(\d{2})(\d)/, '($1) $2') 
+                .replace(/(\d{5})(\d{4})$/, '$1-$2'); 
+        }
+
+        function maskCEP(value) {
+            return value
+                .replace(/\D/g, '') 
+                .slice(0, 8) 
+                .replace(/(\d{5})(\d{3})$/, '$1-$2'); 
+        }
+
+        function setMask(event, maskFunction) {
+            event.target.value = maskFunction(event.target.value);
+        }
+
+        function toUpperCase(event) {
+            event.target.value = event.target.value.toUpperCase();
+        }
+
+        var cpfInput = document.getElementById('cpf');
+        var phoneInput = document.getElementById('telefone');
+        var cepInput = document.getElementById('cep');
+        var textInputs = document.querySelectorAll('input[type="text"]');
+
+        cpfInput.addEventListener('input', function(event) {
+            setMask(event, maskCPF);
+        });
+
+        phoneInput.addEventListener('input', function(event) {
+            setMask(event, maskPhone);
+        });
+
+        cepInput.addEventListener('input', function(event) {
+            setMask(event, maskCEP);
+        });
+
+        textInputs.forEach(function(input) {
+            input.addEventListener('blur', toUpperCase);
+        });
+    });
+</script>
+
+{% endblock %}

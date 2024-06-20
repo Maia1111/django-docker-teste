@@ -1,0 +1,50 @@
+/* Estilos específicos para a página home */
+
+/* Aumentar o espaçamento entre os itens do menu */
+.navbar-nav .nav-item {
+    margin-right: 20px; /* Ajuste conforme necessário */
+}
+
+.navbar-nav .dropdown-menu {
+    margin-top: 10px; /* Ajuste conforme necessário */
+}
+
+/* Aumentar o espaçamento entre os submenus */
+.dropdown-menu .dropdown-item {
+    margin-bottom: 5px; /* Ajuste conforme necessário */
+}
+
+/* Estilo para centralizar a logo */
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+#logo-central {
+    border: 5px solid #32CD32; /* Borda verde */
+    border-radius: 50%; /* Torna a imagem redonda */
+    width: 20%; /* Ajustado para 20% menor */
+    height: auto; /* Mantém a proporção da imagem */
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer {
+    background-color: black;
+    text-align: center;
+    padding: 1rem;
+    color: white;
+}

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Detalhes do Usuário{% endblock %}
+
+{% block conteudo %}
+
+{% include 'partials/barra_voltar_home.html' %}
+<br>
+
+{% block link_barra_voltar %}
+    <a class="navbar-brand loader-link" href="{% url 'listar_usuarios_validar' %}">
+        <i class="bi bi-arrow-left-circle"></i> Voltar para página anterior
+    </a>
+{% endblock %}
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h2>Detalhes do Usuário</h2>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    {% if usuario.foto %}
+                        <img src="{{ usuario.foto.url }}" class="img-fluid rounded" alt="Foto do Usuário">
+                    {% else %}
+                        <img src="https://via.placeholder.com/150" class="img-fluid rounded" alt="Foto do Usuário">
+                    {% endif %}
+                    <br>
+                    <br>
+                </div>
+                <div class="col-md-8">
+                    <h4>{{ usuario.first_name }} {{ usuario.last_name }}</h4>
+                    <p><strong>Nível:</strong> {{ usuario.get_nivel_usuario_display|default_if_none:"" }}</p>
+                    <p><strong>Matrícula:</strong> {{ usuario.matricula|default_if_none:"" }}</p>
+                    <p><strong>RG:</strong> {{ usuario.rg|default_if_none:"" }}</p>
+                    <p><strong>CPF:</strong> {{ usuario.cpf|default_if_none:"" }}</p>
+                    <p><strong>Telefone:</strong> {{ usuario.telefone|default_if_none:"" }}</p>
+                    <p><strong>Email:</strong> {{ usuario.email|default_if_none:"" }}</p>
+                    <p><strong>Endereço:</strong> 
+                        {% if usuario.rua %} {{ usuario.rua }}, {% endif %}
+                        {% if usuario.numero %} {{ usuario.numero }} - {% endif %}
+                        {% if usuario.bairro %} {{ usuario.bairro }}, {% endif %}
+                        {% if usuario.cidade %} {{ usuario.cidade }} - {% endif %}
+                        {% if usuario.estado %} {{ usuario.estado }} - {% endif %}
+                        {% if usuario.cep %} {{ usuario.cep }}{% endif %}
+                    </p>
+                    <p><strong>Unidade:</strong> {{ usuario.unidade.nome|default_if_none:"" }}</p>
+                    <p><strong>Dados Completos:</strong> {{ usuario.dados_completos|yesno:"Sim,Não" }}</p>
+                    <p><strong>Foto Upload:</strong> {{ usuario.upload_foto|yesno:"Sim,Não" }}</p>
+                    <p><strong>Mudança de Senha:</strong> {{ usuario.mudanca_senha|yesno:"Sim,Não" }}</p>
+                    <p><strong>Dados Validados:</strong> {{ usuario.dados_validados|yesno:"Sim,Não" }}</p>
+                </div>
+            </div>
+            <div class="mt-3">
+                <a href="{% url 'validar_usuario' usuario.id  %}" class="btn btn-success loader-link">Validar</a>
+                <a href="{% url  'rejeitar_validacao' usuario.id  %}" class="btn btn-danger loader-link">Rejeitar</a>
+            </div>
+            <br>
+        </div>
+    </div>
+    <br>
+</div>
+
+<!-- Incluir o partial do loader -->
+{% include 'partials/loader.html' %}
+{% endblock %}

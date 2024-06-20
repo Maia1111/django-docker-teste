@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <!-- Inclua o jQuery antes dos scripts do Bootstrap para garantir a compatibilidade -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="{% static 'home/css/home.css' %}" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
+    <!-- Biblioteca Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block title %}Home{% endblock %}
+
+{% block conteudo %}
+<div class="wrapper">
+    {% if messages %}
+        {% for message in messages %}
+            <div style="text-align: center;" class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+        <div class="container-fluid">
+            <h3 class="navbar-brand" id="titulo-nexus">NXS</h3>
+            <img id="foto-logo" src="{% static 'home/img/pulsar.gif' %}" alt="Logo Nexus" width="40" height="40">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav menu-centralizado">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="link-inicial" aria-current="page" href="#"><i class="bi bi-speedometer2 text-white"></i> Painel</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-journal-text text-white"></i> Entradas</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-person-bounding-box"></i> Criminosos</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-bag-check"></i> Apreensões</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-clipboard-data text-white"></i> Relatórios</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-graph-up"></i> Em construção</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-table"></i> Em construção</a></li>
+                        </ul>
+                    </li>
+                    <!-- Novo item de menu para os gráficos -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-bar-chart-fill text-white"></i> Gráficos</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-bar-chart"></i> Gráfico 1</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-bar-chart"></i> Gráfico 2</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-bar-chart"></i> Gráfico 3</a></li>
+                        </ul>
+                    </li>
+                    <!-- Novo item de menu para a área administrativa -->
+                    {% if usuario.is_superuser %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-gear-fill text-white"></i> Área Administrativa</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{% url 'admin_usuarios' %}"><i class="bi bi-sliders"></i> Usuários</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="bi bi-wrench"></i> Área administrativa</a></li>
+                            </ul>
+                        </li>
+                    {% endif %}
+                </ul>
+                <ul class="navbar-nav mb-2 mb-lg-0 perfil-dropdown">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="{{ usuario.foto.url }}" alt="Foto de Perfil" id="foto-perfil"> Perfil
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> Perfil</a></li>
+                            <li><a class="dropdown-item" href="{% url 'sair' %}"><i class="bi bi-box-arrow-right"></i> Sair</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content">
+        <div class="logo-container">
+            <img id="logo-central" src="{% static 'home/img/logo.jpeg' %}" alt="Logo Nexus">
+        </div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="footer bg-black text-white">
+        <div class="container">
+            <span class="text-muted">© 2024 Nexus Scorpions. Todos os direitos reservados.</span>
+        </div>
+    </footer>
+</div>
+{% endblock %}

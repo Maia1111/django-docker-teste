@@ -1,0 +1,45 @@
+<!-- Barra de navegação superior -->
+<style>
+    .navbar-custom {
+        background-color: #1a1a1a;
+    }
+
+    .navbar-custom .navbar-brand {
+        color: #ffffff;
+        font-size: 1.5em;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        margin-right: auto;
+        display: flex;
+        align-items: center;
+    }
+
+    .navbar-custom .navbar-brand:hover {
+        color: limegreen; /* Cor ao passar o mouse */
+    }
+
+    /* Estilo para o ícone do Bootstrap */
+    .navbar-custom .bi-house-fill {
+        margin-right: 10px;
+        font-size: 1.2em; /* Ajuste o tamanho conforme necessário */
+        color: #ffffff; /* Cor do ícone */
+    }
+
+    /* Estilo para o ícone do Bootstrap ao passar o mouse */
+    .navbar-custom .navbar-brand:hover .bi-house-fill {
+        color: limegreen;
+    }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-custom">
+
+    {% block 'barra_voltar' %}
+    <div class="container-fluid">
+        <!-- Link para a página inicial -->
+        {% block 'link_barra_voltar' %}
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <i class="bi bi-house-fill"></i> Home
+            </a>
+        {% endblock %}
+    {% endblock %}
+    </div>
+</nav>

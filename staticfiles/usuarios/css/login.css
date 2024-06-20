@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Nosifer');
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+body {
+    background-color: #1c1c1c; /* Cinza escuro */
+    color: white; /* Texto branco para contraste */
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Centralização do card de login */
+.login-page-container {
+    display: flex;
+    align-items: center; /* Alinha verticalmente */
+    justify-content: center; /* Alinha horizontalmente */
+    min-height: 100vh; /* Altura mínima da janela do navegador */
+    width: 100%; /* Largura total da janela do navegador */
+}
+
+.card {  
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo preto transparente */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    max-width: 400px;
+    padding: 65px;
+    padding-top: 100px;
+    min-height: 275px; /* Altura mínima do cartão */
+    text-align: center;
+    margin: 10px;
+    border: 2px solid limegreen;
+    border-radius: 7px;
+    position: relative;
+    animation: pulse 1s 3;
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.input-group {
+    margin-bottom: 10px;
+    border-bottom: 1px solid limegreen;
+}
+
+.input-group input[type="text"],
+.input-group input[type="password"] {
+    border: none;
+    background-color: transparent;
+    color: #ffffff;
+    outline: none;
+    box-shadow: none;
+}
+
+/* Adicionando efeito brilhante ao placeholder */
+.input-group input::placeholder {
+    color: white;
+    opacity: 1; /* Garante que a cor do placeholder seja totalmente opaca */
+}
+
+.input-group input[type="text"]:focus,
+.input-group input[type="password"]:focus {
+    border: none;
+    background-color: transparent;
+    color: #f5f5f5;
+    outline: none;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+.btn-iron-maiden {
+    font-family: 'Nosifer', cursive;
+    background-color: transparent;
+    border-color: limegreen;
+    color: limegreen;
+    width: 100%;
+    font-size: 20px; /* Tamanho da fonte do botão */
+}
+
+.btn-iron-maiden:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+/* Media queries */
+@media (max-width: 1368px) {
+    .card {
+        max-width: 600px;
+        padding: 60px;
+        font-size: 14px;
+    }
+
+    .btn-iron-maiden {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 992px) {
+    .card {
+        max-width: 500px;
+        padding: 50px;
+        font-size: 14px;
+    }
+
+    .btn-iron-maiden {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        max-width: 400px;
+        padding: 40px;
+        font-size: 12px;
+    }
+
+    .btn-iron-maiden {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 576px) {
+    .card {
+        max-width: 300px;
+        padding: 30px;
+        font-size: 10px;
+    }
+
+    .btn-iron-maiden {
+        font-size: 12px;
+    }
+
+    .input-group input[type="text"],
+    .input-group input[type="password"] {
+        font-size: 12px;
+    }
+}
+
+/* Garante que o botão mantenha o estilo em todas as resoluções */
+.btn-iron-maiden {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: transparent;
+    border-color: limegreen;
+    color: rgb(220, 228, 220);
+    width: 100%;
+}

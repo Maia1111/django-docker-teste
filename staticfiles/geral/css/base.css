@@ -1,0 +1,166 @@
+/* Estilos Gerais */
+.navbar {
+    background-color: black;
+}
+
+.navbar-nav .nav-link {
+    font-size: 16px;
+    color: white;
+    font-weight: bold;
+}
+
+#foto-perfil {
+    border-radius: 25px;
+    border: solid 1px rgb(21, 184, 34);
+    width: 50px;  
+    height: 40px;
+}
+
+#foto-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 25px;
+    border: solid 1px rgb(21, 184, 34);
+}
+
+.menu-centralizado {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.navbar .dropdown-toggle:hover, 
+.dropdown-menu .dropdown-item:hover {
+    background-color: limegreen;
+    border-radius: 5px;
+}
+
+/* Estilos para Desktop */
+@media (min-width: 992px) {
+    .navbar-collapse {
+        justify-content: center;
+    }
+    
+    .navbar-collapse .perfil-dropdown {
+        margin-left: auto;
+    }
+
+    .navbar .dropdown-toggle {
+        padding-left: 10px;
+    }
+}
+
+/* Estilos para Tablet */
+@media (max-width: 991px) {
+    .navbar-nav .nav-link,
+    .navbar-nav .dropdown-toggle,
+    .navbar-nav .dropdown-menu .dropdown-item,
+    .navbar-brand,
+    .navbar-toggler {
+        font-size: 14px; /* Tamanho da fonte reduzido para tablets */
+    }
+
+    #foto-perfil, #foto-logo {
+        width: 40px;  
+        height: 30px;
+    }
+
+    .navbar-toggler {
+        padding: 0.25rem 0.5rem;
+        font-size: 1.25rem;
+    }
+}
+
+/* Estilos para Dispositivos Móveis */
+@media (max-width: 767px) {
+    .navbar-nav .nav-link,
+    .navbar-nav .dropdown-toggle,
+    .navbar-nav .dropdown-menu .dropdown-item,
+    .navbar-brand,
+    .navbar-toggler {
+        font-size: 12px; /* Tamanho da fonte ainda menor para dispositivos móveis */
+    }
+
+    #foto-perfil, #foto-logo {
+        width: 30px;  
+        height: 20px;
+    }
+
+    .navbar-toggler {
+        padding: 0.2rem 0.4rem;
+        font-size: 1rem;
+    }
+
+    #link-inicial {
+        margin-top: 10px; /* Estilo específico para #link-inicial */
+    }
+
+    /* Adicionar quaisquer outros estilos específicos para dispositivos móveis aqui */
+}
+
+.dropdown-toggle {
+    color: white;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+#link-inicial {
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    padding-left: 10px;
+}
+
+#link-inicial:hover {
+    color: white;
+    background-color: limegreen;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    padding-left: 10px;
+}
+
+/* CSS para garantir que o rodapé fique no fim da página */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+}
+
+/* Estilização do rodapé */
+.footer {
+    background-color: #000; /* ou qualquer outra cor desejada */
+    color: #fff; /* ou qualquer outra cor desejada */
+    text-align: center;
+    padding: 1em 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Estilo da fonte */
+body, .navbar, .nav-link, .dropdown-item {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px; /* Tamanho padrão da fonte */
+}
+
+/* Ajuste o tamanho da fonte para tablets */
+@media (max-width: 991px) {
+    body, .navbar, .nav-link, .dropdown-item {
+        font-size: 14px; /* Tamanho da fonte reduzido para tablets */
+    }
+}
+
+/* Ajuste o tamanho da fonte para dispositivos móveis */
+@media (max-width: 767px) {
+    body, .navbar, .nav-link, .dropdown-item {
+        font-size: 12px; /* Tamanho da fonte ainda menor para dispositivos móveis */
+    }
+}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}
+    Validação em Progresso
+{% endblock %}
+
+{% block css %}
+<style>
+    .centralizado {
+        min-height: 100vh; /* Altura mínima para ocupar a tela inteira */
+        display: flex;
+        flex-direction: column; /* Organiza os itens em coluna */
+        align-items: center; /* Centraliza horizontalmente */
+        justify-content: center; /* Centraliza verticalmente */
+    }
+    .texto-espera {
+        font-size: 1.5rem; /* Tamanho da fonte do texto */
+        margin-top: 20px; /* Espaço entre o ícone e o texto */
+    }
+    .icone-espera {
+        font-size: 4rem; /* Tamanho do ícone */
+
+    }
+
+    img {
+        width: 100px;
+        height: 100px;
+
+    }
+    
+</style>
+{% endblock %}
+
+{% block conteudo %}
+
+<div class="centralizado">
+    <img src="{% static 'usuarios/img/mensagem.gif' %}" alt="Ícone de Espera" class="icone-espera" />
+    <span class="texto-espera">Verifique sua caixa de email...</span>
+</div>
+
+{% endblock %}

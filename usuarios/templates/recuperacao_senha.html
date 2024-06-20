@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block titulo %}Recuperação de Senha{% endblock %}
+
+{% block head %}
+ 
+    <style>
+        .texto-fundo-preto {
+            background-color: black;
+            color: white; /* Para garantir que o texto seja legível */
+
+            h2 {
+                color: white;
+                font-size: 1rem;
+                font-family: Arial, sans-serif;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block conteudo %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4>Recuperação de Senha</h4>
+                </div>
+                <div class="card-body texto-fundo-preto">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+
+                    <form method="POST" action="{% url 'recuperacao_senha' %}">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Confirme o Email</label>
+                            <input type="email" class="form-control" id="confirmar_email" name="confirmar_email" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Enviar</button>
+                        <br>
+                        <br>
+                        <h2 >Caso o email esteja vindulado a um conta válida, será enviado a senha nova para este email.</h2>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'partials/loader.html' %}
+{% endblock %}
+
+{% block js %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block title %} admin Usuarios{% endblock %}
+
+{% block conteudo %}
+
+{% include 'partials/barra_voltar_home.html' %}
+
+
+<div class="container mt-5">
+    <div class="row">
+
+        <div class="col-md-3 mb-4">
+            <div class="card card-custom">
+                <div class="card-body">
+                    <i class="bi bi-person-plus card-icon"></i>
+                    <h5 class="card-title">Cadastrar Usuário</h5>
+                    <p class="card-text">Adicione novos usuários ao sistema.</p>
+                    <a href="{% url 'criar_usuario' %}" class="btn btn-primary">Acessar</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-4">
+            <div class="card card-custom">
+                <div class="card-body">
+                    <i class="bi bi-check-circle card-icon"></i>
+                    <h5 class="card-title">Validar Usuários</h5>
+                    <p class="card-text">Valide os usuários registrados.</p>
+                    <a href="{% url 'listar_usuarios_validar' %}" class="btn btn-primary">Acessar</a>
+                </div>
+            </div>
+        </div>       
+
+        <div class="col-md-3 mb-4">
+            <div class="card card-custom">
+                <div class="card-body">
+                    <i class="bi bi-list-ul card-icon"></i>
+                    <h5 class="card-title">Usuários validados</h5>
+                    <p class="card-text">Veja a lista completa de usuários.</p>
+                    <a href="{% url 'usuarios_validados' %}" class="btn btn-primary">Acessar</a>
+                </div>
+            </div>
+        </div>
+       
+       
+    </div>
+</div>
+{% endblock %}
